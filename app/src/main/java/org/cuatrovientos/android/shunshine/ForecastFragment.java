@@ -41,7 +41,11 @@ public class ForecastFragment extends Fragment {
                         // automatically handle clicks on the Home/Up button, so long
                                 // as you specify a parent activity in AndroidManifest.xml.
                                         int id = item.getItemId();
+
                 if (id == R.id.action_refresh) {
+                    Log.d("Shunshine", "Refresh clicked");
+                    FetchWeatherTask weatherTask = new FetchWeatherTask(mForecastAdapter);
+                    weatherTask.execute("94043");
                         return true;
                     }
                 return super.onOptionsItemSelected(item);
@@ -77,6 +81,6 @@ public class ForecastFragment extends Fragment {
         Log.d("Shunshine", weekForecast.toString());
         listView.setAdapter(mForecastAdapter);
 
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        return rootView;
     }
 }
