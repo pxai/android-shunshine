@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,10 +18,34 @@ import java.util.List;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment {
+public class ForecastFragment extends Fragment {
     ArrayAdapter<String> mForecastAdapter;
-    public MainActivityFragment() {
+    public ForecastFragment() {
     }
+
+    @Override
+        public void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                // Add this line in order for this fragment to handle menu events.
+                        setHasOptionsMenu(true);
+            }
+
+                @Override
+        public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+                inflater.inflate(R.menu.forecastfragment, menu);
+            }
+
+                @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+                // Handle action bar item clicks here. The action bar will
+                        // automatically handle clicks on the Home/Up button, so long
+                                // as you specify a parent activity in AndroidManifest.xml.
+                                        int id = item.getItemId();
+                if (id == R.id.action_refresh) {
+                        return true;
+                    }
+                return super.onOptionsItemSelected(item);
+          }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
