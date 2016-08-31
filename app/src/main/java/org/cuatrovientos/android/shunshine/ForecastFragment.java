@@ -1,6 +1,8 @@
 package org.cuatrovientos.android.shunshine;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,7 +51,11 @@ public class ForecastFragment extends Fragment {
                 if (id == R.id.action_refresh) {
                     Log.d("Shunshine", "Refresh clicked");
                     FetchWeatherTask weatherTask = new FetchWeatherTask(mForecastAdapter);
-                    weatherTask.execute("94043");
+                                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                                String location = prefs.getString(getString(R.string.pref_location_key),
+                                                getString(R.string.pref_location_default));
+                                weatherTask.execute(location);
+                    //weatherTask.execute("94043");
                         return true;
                     }
                 return super.onOptionsItemSelected(item);

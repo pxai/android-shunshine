@@ -65,4 +65,6 @@
     <string name="pref_postal_code">31012</string>
     <string name="pref_title_postal_code">Postal Code</string>
     <string name="pref_temperature_units_list_title">Temperature Units</string>
+    <string name="pref_location_key">postal_code</string>
+    <string name="pref_location_default">31012</string>
 </resources>
